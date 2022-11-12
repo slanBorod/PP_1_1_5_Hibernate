@@ -1,10 +1,11 @@
 package jm.task.core.jdbc;
 
-
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
+import org.hibernate.Session;
+
 import java.sql.SQLException;
 
 public class Main {
@@ -20,9 +21,10 @@ public class Main {
          4. Очистка таблицы User'ов
          5. Удаление таблицы*/
 
-        Util util = new Util();
-        util.getConnection();
 
+        try (Session session = Util.getSessionFactory().openSession()) {
+
+        }
         user.createUsersTable();
 
         user.saveUser("Lina", "Dolgova", (byte) 30);
